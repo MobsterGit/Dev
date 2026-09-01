@@ -75,7 +75,7 @@ img { display: block; max-width: 100%; }
 .button-outline:hover { border-color: white; background: rgba(255,255,255,.08); }
 
 .hero { position: relative; min-height: 820px; display: flex; align-items: center; overflow: hidden; }
-.hero-photo { position: absolute; inset: 0; background: url('https://lakes-barbershop-concept.openai.site/images/shop-exterior.jpeg') center/cover no-repeat; }
+.hero-photo { position: absolute; inset: 0; background: url('images/shop-exterior.jpeg') center/cover no-repeat; }
 .hero-shade {
   position: absolute;
   inset: 0;
@@ -114,7 +114,7 @@ h1 { max-width: 680px; margin-top: 24px; font-size: clamp(4.6rem, 9vw, 8rem); li
 .service-card a { display: inline-flex; align-items: center; gap: 8px; color: white; font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 
 .shop-section { display: grid; grid-template-columns: 1.12fr .88fr; min-height: 690px; }
-.shop-image { min-height: 620px; background: linear-gradient(0deg, rgba(4,6,8,.35), transparent 55%), url('https://lakes-barbershop-concept.openai.site/images/shop-interior.jpeg') center/cover no-repeat; }
+.shop-image { min-height: 620px; background: linear-gradient(0deg, rgba(4,6,8,.35), transparent 55%), url('images/shop-interior.jpeg') center/cover no-repeat; }
 .shop-story { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 100px); background: var(--steel); }
 .shop-story > p:not(.eyebrow) { max-width: 570px; color: #d4d7d8; font-size: 1.05rem; line-height: 1.75; }
 .barber-block { margin-top: 38px; padding: 28px 0 0 28px; border-top: 1px solid rgba(255,255,255,.14); border-left: 5px solid var(--orange); }
