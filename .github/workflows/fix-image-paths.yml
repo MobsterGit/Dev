@@ -1,0 +1,41 @@
+name: Fix local image paths
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Point site to local image assets
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text()
+          s = s.replace('https://lakes-barbershop-concept.openai.site/og.png', 'images/og.png')
+          s = s.replace('https://lakes-barbershop-concept.openai.site/images/lakes-logo.png', 'images/lakes-logo.png')
+          p.write_text(s)
+
+          p = Path('style.css')
+          s = p.read_text()
+          s = s.replace('https://lakes-barbershop-concept.openai.site/images/shop-exterior.jpeg', 'images/shop-exterior.jpeg')
+          s = s.replace('https://lakes-barbershop-concept.openai.site/images/shop-interior.jpeg', 'images/shop-interior.jpeg')
+          p.write_text(s)
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html style.css
+          git commit -m "Use local Lakes Barbershop image assets" || exit 0
+          git push
