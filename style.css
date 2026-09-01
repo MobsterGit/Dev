@@ -75,7 +75,7 @@ img { display: block; max-width: 100%; }
 .button-outline:hover { border-color: white; background: rgba(255,255,255,.08); }
 
 .hero { position: relative; min-height: 820px; display: flex; align-items: center; overflow: hidden; }
-.hero-photo { position: absolute; inset: 0; background: url('images/shop-exterior.jpeg') center/cover no-repeat; }
+.hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .hero-shade {
   position: absolute;
   inset: 0;
@@ -114,7 +114,8 @@ h1 { max-width: 680px; margin-top: 24px; font-size: clamp(4.6rem, 9vw, 8rem); li
 .service-card a { display: inline-flex; align-items: center; gap: 8px; color: white; font-size: .72rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 
 .shop-section { display: grid; grid-template-columns: 1.12fr .88fr; min-height: 690px; }
-.shop-image { min-height: 620px; background: linear-gradient(0deg, rgba(4,6,8,.35), transparent 55%), url('images/shop-interior.jpeg') center/cover no-repeat; }
+.shop-image { position: relative; min-height: 620px; overflow: hidden; }
+.shop-image img { width: 100%; height: 100%; min-height: 620px; object-fit: cover; object-position: center; }
 .shop-story { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 100px); background: var(--steel); }
 .shop-story > p:not(.eyebrow) { max-width: 570px; color: #d4d7d8; font-size: 1.05rem; line-height: 1.75; }
 .barber-block { margin-top: 38px; padding: 28px 0 0 28px; border-top: 1px solid rgba(255,255,255,.14); border-left: 5px solid var(--orange); }
@@ -159,7 +160,7 @@ footer { padding: 26px 0; background: #050607; }
   .service-card { min-height: auto; }
   .service-card p { min-height: auto; }
   .shop-section { grid-template-columns: 1fr; }
-  .shop-image { min-height: 560px; }
+  .shop-image, .shop-image img { min-height: 560px; }
   .proof, .contact-grid { grid-template-columns: 1fr; }
 }
 
@@ -171,7 +172,7 @@ footer { padding: 26px 0; background: #050607; }
   .brand small { font-size: .5rem; }
   .site-header .button { display: none; }
   .hero { min-height: auto; display: block; padding: 150px 0 78px; }
-  .hero-photo { background-position: 63% center; }
+  .hero-photo { object-position: 63% center; }
   .hero-shade { background: linear-gradient(90deg, rgba(4,6,8,.95), rgba(4,6,8,.65)), linear-gradient(0deg, rgba(4,6,8,.7), transparent); }
   .hero-content { padding-top: 0; }
   h1 { font-size: clamp(3.1rem, 14.5vw, 4rem); line-height: .9; }
@@ -189,7 +190,7 @@ footer { padding: 26px 0; background: #050607; }
   .service-card { padding: 28px; }
   .service-card h3, .service-card p, .service-card a { max-width: 100%; overflow-wrap: anywhere; }
   .shop-section > *, .proof > *, .contact-grid > *, .footer-inner > * { min-width: 0; max-width: 100%; }
-  .shop-image { min-height: 460px; }
+  .shop-image, .shop-image img { min-height: 460px; }
   .shop-story { padding: 58px 24px; }
   .proof { width: 100%; gap: 0; padding: 0; }
   .review-card, .booking-panel { padding: 54px 24px; }
