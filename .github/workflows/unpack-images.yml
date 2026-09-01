@@ -1,0 +1,34 @@
+name: Unpack image assets
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Unpack images and commit
+        shell: bash
+        run: |
+          ZIP="images/Lakes-Barbershop-Images-ONLY.zip"
+          if [ ! -f "$ZIP" ]; then
+            echo "No ZIP found; nothing to do."
+            exit 0
+          fi
+          unzip -o "$ZIP" -d images
+          rm -f "$ZIP" images/.gitkeep
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images
+          git commit -m "Unpack Lakes Barbershop image assets" || exit 0
+          git push
