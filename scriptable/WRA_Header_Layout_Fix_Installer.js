@@ -47,7 +47,7 @@ for (const store of [{fm:FileManager.iCloud(),name:"iCloud"},{fm:FileManager.loc
   }
   for (const folder of folders) {
     for (const n of store.fm.listContents(folder)) {
-      if (!/\\.js$/i.test(n) || /installer|backup/i.test(n)) continue;
+      if (!/\.js$/i.test(n) || /installer|backup/i.test(n)) continue;
       const p=store.fm.joinPath(folder,n);
       try {
         if (store.fm.isFileDownloaded && !store.fm.isFileDownloaded(p)) {
@@ -93,7 +93,7 @@ if (!candidates.length) {
     if (!fixed.includes(PATCH_MARKER) || !fixed.includes('class="customer-project"') ||
       fixed.includes('<section class="docline">')) throw new Error("Validation failed. Original unchanged.");
     const confirm=new Alert();confirm.title="Fix Invoice Header";
-    confirm.message="File: " + selected.name + " (" + selected.location + ")\\n\\nMove invoice title/number/date to the top right; move customer/project below the logo. Keep all pricing, numbering and records unchanged.\\n\\nA timestamped backup is created before the edit.";
+    confirm.message="File: " + selected.name + " (" + selected.location + ")\n\nMove invoice title/number/date to the top right; move customer/project below the logo. Keep all pricing, numbering and records unchanged.\n\nA timestamped backup is created before the edit.";
     confirm.addAction("Back Up & Fix");confirm.addCancelAction("Cancel");
     if (await confirm.presentAlert()===0) {
       const fm=selected.fm;
@@ -103,7 +103,7 @@ if (!candidates.length) {
       fm.writeString(backup,src);
       fm.writeString(selected.path,fixed);
       const done=new Alert();done.title="Header Updated";
-      done.message="Open WRA Manager and preview an invoice.\\n\\nBackup: " + backup;
+      done.message="Open WRA Manager and preview an invoice.\n\nBackup: " + backup;
       done.addAction("OK");await done.presentAlert();
     }
   }
